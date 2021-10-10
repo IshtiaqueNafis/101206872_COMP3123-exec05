@@ -1,8 +1,9 @@
 const fs = require('fs');
+const pathResolver = require('path')
 
-
-let rawData = fs.readFileSync('C:\\Users\\Nafis Ishtiaque\\Downloads\\week05_lab_execrcise05 (2)\\week05_lab_execrcise05\\user.json');
+let rawData = fs.readFileSync(pathResolver.join(__dirname,'.././user.json'));
 let data = JSON.parse(rawData);
+console.log(data)
 
 const convertToJavascriptObject = value => JSON.parse(value.split('=').pop());
 

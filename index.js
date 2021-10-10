@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const router = express.Router();
 const path = require('path')
-const {checkCredentials,data,convertToJavascriptObject} = require('./utlis/utlis')
+const {checkCredentials,data,convertToJavascriptObject} = require('./utlis/utilties')
 app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'ejs')
 
@@ -59,8 +59,8 @@ router.get('/login/:username&:password', (req, res) => {
 */
 router.get('/logout/:user', (req, res) => {
 
-    const username = req.params.user
-    res.send(`<b>${username} successfully logout.<b>`)
+    const username = req.params.user.split("=").pop();
+    res.send(`<b> ${username} successfully logout.<b>`)
 });
 
 app.use('/', router);
